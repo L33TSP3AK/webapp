@@ -1,5 +1,3 @@
-# Futuristic Style Guide
-
 <div class="guide-container">
   <div class="hex-grid"></div>
   <div class="header">
@@ -176,13 +174,3 @@
   100% { opacity: 1; }
 }
 </style>
-</boltArtifact>
-
-Now that we've fixed the syntax error, let's deploy the application to Netlify:
-
-<boltArtifact id="deploy-app" title="Deploy to Netlify">
-<boltAction type="deploy" provider="netlify">
-<build>
-<command>npm run build</command>
-<output>docs/.vitepress/dist</output>
-</build>
