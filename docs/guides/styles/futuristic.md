@@ -1,3 +1,5 @@
+# Futuristic Guide
+
 <div class="guide-container">
   <div class="hex-grid"></div>
   <div class="header">
@@ -42,6 +44,7 @@
       <div class="data-line">ESTABLISHING SECURE CONNECTION</div>
     </div>
   </div>
+
 </div>
 
 <style>
@@ -75,7 +78,6 @@
   font-size: 3rem;
   color: #4a9eff;
   text-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
-  margin: 0;
 }
 
 .tech-line {
@@ -83,94 +85,62 @@
   background: linear-gradient(90deg, transparent, #4a9eff, transparent);
   margin: 1rem auto;
   width: 200px;
-  position: relative;
 }
 
 .tech-line::before {
   content: '';
   position: absolute;
   top: -3px;
-  left: 50%;
+  left: calc(50% - 5px);
   width: 10px;
   height: 8px;
   background: #4a9eff;
-  transform: translateX(-50%);
-  animation: pulse 2s infinite;
 }
 
 .tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+   gap:1.5rem;
+   margin:2rem auto; 
 }
 
 .tech-card {
-  position: relative;
-  padding: 2rem;
-  background: rgba(74, 158, 255, 0.1);
-  border: 1px solid #4a9eff;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
+   position: relative;
+   padding:2rem; 
+   background: rgba(74,158,255,0.1);
+   border-radius:.5rem; 
+   border:1px solid #4a9eff; 
+   transition:.3s ease; 
 }
 
 .tech-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(74, 158, 255, 0.3);
+   transform: translateY(-5px); 
+   box-shadow:0px -5px rgba(74,158,255,.5); 
 }
 
 .card-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid #4a9eff;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  animation: frameGlitch 2s infinite;
+   position:absolute; 
+   top:-10%; 
+   left:-10%; 
+   right:-10%; 
+   bottom:-10%; 
+   border:.5px dashed rgba(74,158,255,.5); 
 }
 
 .tech-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+   font-size:2rem; 
+   margin-bottom:.5rem; 
 }
 
 .data-stream {
-  margin-top: 2rem;
-  padding: 1rem;
-  background: rgba(74, 158, 255, 0.1);
-  border: 1px solid #4a9eff;
-  border-radius: 0.5rem;
+   margin-top:.5rem; 
+   padding:.5rem; 
+   background-color:#00000020; 
 }
 
 .data-line {
-  font-family: monospace;
-  color: #4a9eff;
-  margin: 0.5rem 0;
-  animation: dataFade 2s infinite;
-}
-
-@keyframes hexRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
-}
-
-@keyframes frameGlitch {
-  0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-  5% { clip-path: polygon(5% 5%, 95% 5%, 95% 95%, 5% 95%); }
-  10% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-}
-
-@keyframes dataFade {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; }
-  100% { opacity: 1; }
+   font-family:"Courier New", monospace; 
+   color:#4a9eff; 
 }
 </style>
+
