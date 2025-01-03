@@ -1,4 +1,3 @@
-# MegaBonanza Guide
 <div class="hologram-container">
   <div class="hologram-overlay"></div>
   

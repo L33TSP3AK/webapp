@@ -1,5 +1,3 @@
-# Token Dumping Guide
-
 <div class="guide-container">
   <div class="cyber-grid"></div>
   <div class="guide-header">

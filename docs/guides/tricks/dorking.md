@@ -1,80 +1,61 @@
+<script setup>
+import DorkOperator from './components/DorkOperator.vue'
+import SearchPattern from './components/SearchPattern.vue'
+</script>
+
 <div class="guide-container">
   <div class="cyber-grid"></div>
   <div class="guide-header">
-    <div class="neon-text">DORKING<br><tab>MASTERY</div>
+    <div class="neon-text">DORKING<br>MASTERY</div>
     <div class="cyber-line"></div>
   </div>
   <div class="guide-content">
-    <AccordionItem type="cyber" title="Dorking Basics" icon="🔍" status="ACTIVE">
-      <div class="dork-operators">
-        <div class="operator">
-          <code>site:</code>
-          <span>Limit search to specific domain</span>
-        </div>
-        <div class="operator">
-          <code>inurl:</code>
-          <span>Search in URL path</span>
-        </div>
-        <div class="operator">
-          <code>filetype:</code>
-          <span>Search for file types</span>
-        </div>
-        <div class="operator">
-          <code>intitle:</code>
-          <span>Search in page title</span>
-        </div>
+    <AccordionItem type="cyber" title="Basic Operators" icon="🔍" status="ACTIVE">
+      <div class="operators-grid">
+        <DorkOperator 
+          operator="site:"
+          description="Limit search to specific domain"
+        />
+        <DorkOperator 
+          operator="inurl:"
+          description="Search in URL path"
+        />
+        <DorkOperator 
+          operator="filetype:"
+          description="Search for file types"
+        />
+        <DorkOperator 
+          operator="intitle:"
+          description="Search in page title"
+        />
       </div>
     </AccordionItem>
-    <AccordionItem type="neon" title="Advanced Techniques" icon="⚡" status="PRO">
-      <div class="techniques-grid">
-        <div class="technique">
-          <h4>Database Files</h4>
-          <code>filetype:sql intext:password</code>
-          <p>Find exposed database files</p>
-        </div>
-        <div class="technique">
-          <h4>Config Files</h4>
-          <code>filetype:env OR filetype:cfg</code>
-          <p>Locate configuration files</p>
-        </div>
-        <div class="technique">
-          <h4>Admin Panels</h4>
-          <code>inurl:admin intitle:login</code>
-          <p>Discover admin login pages</p>
-        </div>
+    <AccordionItem type="neon" title="Advanced Patterns" icon="⚡" status="PRO">
+      <div class="patterns-grid">
+        <SearchPattern
+          title="Database Files"
+          query="filetype:sql intext:password"
+          :notes="['Check permissions', 'Verify data']"
+        />
+        <SearchPattern
+          title="Config Files" 
+          query="filetype:env OR filetype:cfg"
+          :notes="['Test access', 'Check contents']"
+        />
+        <SearchPattern
+          title="Admin Panels"
+          query="inurl:admin intitle:login"
+          :notes="['Verify endpoints', 'Test security']"
+        />
       </div>
     </AccordionItem>
-    <AccordionItem type="hologram" title="Search Patterns" icon="📋" status="GUIDE">
-      <div class="patterns-list">
-        <div class="pattern">
-          <div class="pattern-header">
-            <h4>Exposed Credentials</h4>
-            <code>intext:"username" AND intext:"password"</code>
-          </div>
-          <div class="pattern-notes">
-            <span class="note">Check file permissions</span>
-            <span class="note">Verify access</span>
-          </div>
-        </div>
-        <div class="pattern">
-          <div class="pattern-header">
-            <h4>API Endpoints</h4>
-            <code>inurl:api ext:php OR ext:asp</code>
-          </div>
-          <div class="pattern-notes">
-            <span class="note">Test endpoints</span>
-            <span class="note">Check methods</span>
-          </div>
-        </div>
-        <div class="pattern">
-          <div class="pattern-header">
-            <h4>Backup Files</h4>
-            <code>filetype:bak OR filetype:backup</code>
-          </div>
-          <div class="pattern-notes">
-            <span class="note">Verify dates</span>
-            <span class="note">Check contents</span>
-          </div>
+    <AccordionItem type="hologram" title="Security Notice" icon="🔒" status="WARNING">
+      <div class="security-notice">
+        <p>Always maintain proper OPSEC when using these techniques.</p>
+        <div class="notice-tags">
+          <span class="tag">Verify Access</span>
+          <span class="tag">Use Protection</span>
+          <span class="tag">Stay Legal</span>
         </div>
       </div>
     </AccordionItem>
@@ -82,7 +63,6 @@
 </div>
 
 <style>
-/* Base styles from token-dumping.md */
 .guide-container {
   position: relative;
   padding: 2rem;
@@ -105,86 +85,57 @@
   animation: gridScroll 20s linear infinite;
 }
 
-/* Additional styles specific to dorking */
-.dork-operators {
+.guide-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.neon-text {
+  font-size: 3rem;
+  color: #00ff00;
+  text-shadow: 
+    0 0 5px #00ff00,
+    0 0 10px #00ff00,
+    0 0 20px #00ff00;
+  margin: 0;
+}
+
+.cyber-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff00, transparent);
+  margin: 2rem auto;
+  width: 200px;
+}
+
+.operators-grid,
+.patterns-grid {
   display: grid;
   gap: 1rem;
 }
 
-.operator {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.security-notice {
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
   border-radius: 0.5rem;
-  border: 1px solid rgba(0, 255, 0, 0.2);
 }
 
-.operator code {
-  color: #00ff00;
-  font-family: monospace;
-  padding: 0.25rem 0.5rem;
-  background: rgba(0, 255, 0, 0.1);
-  border-radius: 0.25rem;
-}
-
-.techniques-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.technique {
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 255, 0, 0.2);
-}
-
-.technique code {
-  display: block;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  background: rgba(0, 255, 0, 0.1);
-  border-radius: 0.25rem;
-  color: #00ff00;
-  font-family: monospace;
-}
-
-.patterns-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.pattern {
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 255, 0, 0.2);
-}
-
-.pattern-header code {
-  display: block;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  background: rgba(0, 255, 0, 0.1);
-  border-radius: 0.25rem;
-  color: #00ff00;
-  font-family: monospace;
-}
-
-.pattern-notes {
+.notice-tags {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
-.note {
+.tag {
   padding: 0.25rem 0.75rem;
-  background: rgba(0, 255, 0, 0.1);
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
   border-radius: 1rem;
   font-size: 0.8rem;
-  color: #00ff00;
+  color: #ff0000;
 }
 
 @keyframes gridScroll {

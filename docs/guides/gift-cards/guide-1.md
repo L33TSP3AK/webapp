@@ -1,4 +1,3 @@
-# HelloFresh Guide
 <div class="modern-container">
   <div class="guide-header">
     <div class="logo">

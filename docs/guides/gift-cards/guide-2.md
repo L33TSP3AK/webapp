@@ -1,4 +1,3 @@
-# Fanatics Guide
 <div class="cyber-container">
   <div class="matrix-bg"></div>
   

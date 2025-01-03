@@ -1,254 +1,165 @@
-# Membership Levels
+<script setup>
+import { ref } from 'vue'
+import TierCard from '../components/membership/TierCard.vue'
+import ComparisonTable from '../components/membership/ComparisonTable.vue'
 
-<div class="hero-container">
-  <div class="matrix-bg"></div>
-  <div class="hero-content">
-    <div class="glitch-text" data-text="ACCESS TIERS">ACCESS TIERS</div>
-    <div class="cyber-subtitle">Choose Your Power Level</div>
-    <div class="pulse-line"></div>
+const activeTier = ref(null)
+const showComparison = ref(false)
+
+const tiers = {
+  basic: {
+    icon: '🔵',
+    features: ['Basic tool access', 'Community support', 'Standard configs'],
+    limitations: ['No advanced features', 'Limited daily checks', 'Basic support only']
+  },
+  premium: {
+    icon: '⭐',
+    features: ['All basic features', 'Advanced tools', 'Priority support', 'Premium configs'],
+    limitations: ['No custom solutions', 'Standard response time']
+  },
+  vip: {
+    icon: '👑',
+    features: ['All premium features', 'Custom solutions', '24/7 support', 'Private training'],
+    limitations: ['Standard deployment time']
+  },
+  diamond: {
+    icon: '💎',
+    features: ['Unlimited everything', 'Priority development', 'Direct developer access', 'Custom tools'],
+    limitations: []
+  }
+}
+</script>
+
+<template>
+  <div class="membership-container">
+    <div class="cyber-grid"></div>
+    <div class="hero-section">
+      <h1 class="glitch-text" data-text="MEMBERSHIP TIERS">MEMBERSHIP TIERS</h1>
+      <div class="cyber-line"></div>
+    </div>
+    <div class="tiers-grid">
+      <TierCard
+        v-for="(tier, key) in tiers"
+        :key="key"
+        :tier="key"
+        :details="tier"
+        :is-active="activeTier === key"
+        @click="activeTier = key"
+      />
+    </div>
+    <div class="comparison-section">
+      <button 
+        class="comparison-toggle"
+        @click="showComparison = !showComparison"
+      >
+        <span class="icon">📊</span>
+        Compare Features
+      </button>
+      <ComparisonTable 
+        :tiers="tiers"
+        :is-visible="showComparison"
+      />
+    </div>
   </div>
-</div>
-
-## Available Tiers
-
-<div class="tiers-grid">
-  <Card title="Basic Access" icon="🔵">
-    <Badge type="info" text="Entry Level" />
-    <div class="tier-features">
-      <div class="feature">
-        <div class="feature-item">
-          <span class="icon">✅</span>
-          <span>Basic tool access</span>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-item">
-          <span class="icon">✅</span>
-          <span>Community support</span>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-item">
-          <span class="icon">✅</span>
-          <span>Standard configs</span>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-item">
-          <span class="icon">❌</span>
-          <span>Advanced features</span>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-item">
-          <span class="icon">❌</span>
-          <span>Priority support</span>
-        </div>
-      </div>
-    </div>
-    <PricingButton tier="Basic" icon="🔵" />
-  </Card>
-
-  <Card title="Premium Access" icon="⭐">
-    <Badge type="tip" text="Most Popular" />
-    <div class="tier-features">
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>All basic features</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Advanced tools</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Priority support</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Premium configs</span>
-      </div>
-      <div class="feature">
-        <span class="icon">❌</span>
-        <span>Custom solutions</span>
-      </div>
-    </div>
-    <PricingButton tier="Premium" icon="⭐" />
-  </Card>
-
-  <Card title="VIP Access" icon="👑">
-    <Badge type="warning" text="Elite" />
-    <div class="tier-features">
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>All premium features</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Custom solutions</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>24/7 support</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Private training</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Exclusive tools</span>
-      </div>
-    </div>
-    <PricingButton tier="VIP" icon="👑" />
-  </Card>
-
-  <Card title="Diamond Access" icon="💎">
-    <Badge type="danger" text="Ultimate" />
-    <div class="tier-features">
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>All VIP features</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Priority development</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Direct developer access</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Custom tool development</span>
-      </div>
-      <div class="feature">
-        <span class="icon">✅</span>
-        <span>Unlimited everything</span>
-      </div>
-    </div>
-    <PricingButton tier="Diamond" icon="💎" />
-  </Card>
-</div>
+</template>
 
 <style>
-.hero-container {
-  background: linear-gradient(45deg, #000, #1a1a1a);
-  padding: 4rem 2rem;
-  margin: 2rem 0;
-  border-radius: 1rem;
+.membership-container {
   position: relative;
+  padding: 2rem;
+  background: linear-gradient(45deg, #000022, #000044);
+  border-radius: 1rem;
+  margin: 2rem 0;
   overflow: hidden;
 }
 
-.matrix-bg {
+.cyber-grid {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: 
-    repeating-linear-gradient(90deg, 
-      transparent, 
-      transparent 50px, 
-      rgba(0, 255, 0, 0.1) 50px, 
-      rgba(0, 255, 0, 0.1) 51px
-    );
-  animation: scanline 8s linear infinite;
+    linear-gradient(90deg, rgba(0, 229, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(0, 229, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: gridScroll 20s linear infinite;
+  pointer-events: none;
 }
 
-@keyframes scanline {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(100%); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
+.hero-section {
   text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
 }
 
 .glitch-text {
   font-size: 3rem;
-  font-weight: bold;
-  color: #00ff00;
-  text-shadow: 
-    0 0 5px #00ff00,
-    0 0 10px #00ff00,
-    0 0 20px #00ff00;
-  animation: glitch 1s infinite;
-}
-
-@keyframes glitch {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
-}
-
-.cyber-subtitle {
-  font-size: 1.5rem;
   color: #00e5ff;
-  margin-top: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 4px;
+  text-shadow: 0 0 10px #00e5ff;
+  position: relative;
 }
 
-.pulse-line {
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, 900px, 0, 0);
+  animation: glitch 2s infinite linear alternate-reverse;
+}
+
+.cyber-line {
   height: 2px;
-  background: #00ff00;
+  background: linear-gradient(90deg, transparent, #00e5ff, transparent);
   margin: 2rem auto;
   width: 200px;
-  position: relative;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scaleX(1); opacity: 1; }
-  50% { transform: scaleX(1.5); opacity: 0.5; }
-  100% { transform: scaleX(1); opacity: 1; }
 }
 
 .tiers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
   margin: 2rem 0;
 }
 
-.tier-features {
-  margin: 1rem 0;
+.comparison-section {
+  margin-top: 3rem;
 }
 
-.feature {
+.comparison-toggle {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--vp-c-border);
-}
-
-.feature:last-child {
-  border-bottom: none;
-}
-
-.feature .icon {
-  font-size: 1.2rem;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 229, 255, 0.1);
+  border: 1px solid #00e5ff;
+  border-radius: 0.5rem;
+  color: #00e5ff;
   cursor: pointer;
-  transition: all 0.2s ease;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
-.feature-item:hover {
-  background: var(--vp-c-bg-alt);
+.comparison-toggle:hover {
+  background: rgba(0, 229, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+@keyframes gridScroll {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+@keyframes glitch {
+  0% { clip: rect(44px, 900px, 56px, 0); }
+  20% { clip: rect(12px, 900px, 65px, 0); }
+  40% { clip: rect(78px, 900px, 92px, 0); }
+  60% { clip: rect(23px, 900px, 45px, 0); }
+  80% { clip: rect(34px, 900px, 86px, 0); }
+  100% { clip: rect(67px, 900px, 91px, 0); }
 }
 </style>

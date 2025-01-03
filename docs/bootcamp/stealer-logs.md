@@ -1,143 +1,218 @@
-# Stealer Logs Guide
+# Stealer Logs: Just the Surface
 
-<div class="hero-section">
-  <h1>Advanced Stealer Log Analysis</h1>
-  <p>Master the art of extracting and analyzing valuable data from stealer logs</p>
+<div class="hero-container">
+  <div class="matrix-bg"></div>
+  <div class="hero-content">
+    <div class="glitch-text" data-text="STEALER LOGS">STEALER LOGS</div>
+    <div class="cyber-subtitle">Advanced Data Analysis</div>
+    <div class="pulse-line"></div>
+  </div>
 </div>
 
-## Log Contents Overview
+## Types of Data
 
-<div class="content-grid">
-  <Feature
+<div class="data-grid">
+  <InteractiveDataCard
+    title="Cookies"
     icon="🍪"
-    title="Cookies & Sessions"
-    details="Browser cookies, session tokens, and authentication data"
+    description="Browser cookie data containing session and authentication information"
+    :items="[
+      'Session cookies',
+      'Persistence cookies',
+      'Authentication data',
+      'Encrypted credentials'
+    ]"
+    :details="{
+      description: 'Browser cookies contain valuable session data and authentication tokens that can be used to hijack active sessions.',
+      risks: [
+        'Session hijacking possible',
+        'Stored credentials exposure',
+        'Authentication bypass',
+        'Persistent access'
+      ],
+      tips: [
+        'Check expiration dates',
+        'Validate cookie integrity',
+        'Test session persistence',
+        'Monitor for encryption'
+      ]
+    }"
   />
-  <Feature
+
+  <InteractiveDataCard
+    title="Logins"
     icon="🔑"
-    title="Credentials"
-    details="Login information, stored passwords, and access tokens"
+    description="Stored login credentials for various platforms and services"
+    :items="[
+      'Email credentials',
+      'Social media accounts',
+      'Banking logins',
+      'E-commerce platforms'
+    ]"
+    :details="{
+      description: 'Stored login credentials can provide access to various accounts and services.',
+      risks: [
+        'Account takeover',
+        'Identity theft',
+        'Financial fraud',
+        'Data breach'
+      ],
+      tips: [
+        'Verify credential validity',
+        'Check for 2FA',
+        'Test login attempts',
+        'Monitor for patterns'
+      ]
+    }"
   />
-  <Feature
-    icon="💳"
-    title="Financial Data"
-    details="Payment information, wallet data, and transaction history"
-  />
-  <Feature
-    icon="📱"
-    title="Device Info"
-    details="System information, installed software, and configurations"
-  />
-</div>
 
-## Analysis Tools
-
-<div class="tools-section">
-  <Card title="Essential Tools" icon="🔧">
-    <Badge type="tip" text="Required" />
-    <ul>
-      <li>Cookie Managers</li>
-      <li>Session Analyzers</li>
-      <li>Data Extractors</li>
-      <li>Decryption Tools</li>
-    </ul>
-  </Card>
-
-  <Card title="Advanced Tools" icon="⚡">
-    <Badge type="warning" text="Professional" />
-    <ul>
-      <li>Pattern Matchers</li>
-      <li>Automated Sorters</li>
-      <li>Validation Systems</li>
-      <li>Analysis Frameworks</li>
-    </ul>
-  </Card>
-</div>
-
-## Processing Methods
-
-<div class="methods-grid">
-  <Feature
-    icon="📥"
-    title="Data Extraction"
-    details="Advanced techniques for extracting valuable information"
-  />
-  <Feature
-    icon="🔍"
-    title="Pattern Analysis"
-    details="Identifying valuable data patterns and structures"
-  />
-  <Feature
+  <InteractiveDataCard
+    title="Sessions"
     icon="🔄"
-    title="Data Processing"
-    details="Converting raw data into usable formats"
+    description="Active session data and authentication tokens"
+    :items="[
+      'Active sessions',
+      'Authentication tokens',
+      'Session persistence',
+      'Token validation'
+    ]"
+    :details="{
+      description: 'Session data allows access to active user sessions without requiring login credentials.',
+      risks: [
+        'Session persistence',
+        'Token reuse',
+        'Access escalation',
+        'Lateral movement'
+      ],
+      tips: [
+        'Check token validity',
+        'Test session duration',
+        'Monitor for expiration',
+        'Validate permissions'
+      ]
+    }"
+  />
+
+  <InteractiveDataCard
+    title="Wallets"
+    icon="💰"
+    description="Cryptocurrency wallet data and private keys"
+    :items="[
+      'Wallet files',
+      'Private keys',
+      'Seed phrases',
+      'Transaction history'
+    ]"
+    :details="{
+      description: 'Cryptocurrency wallet data can provide access to digital assets and transaction history.',
+      risks: [
+        'Asset theft',
+        'Transaction monitoring',
+        'Key compromise',
+        'Wallet takeover'
+      ],
+      tips: [
+        'Verify wallet balance',
+        'Check transaction logs',
+        'Test key validity',
+        'Monitor for activity'
+      ]
+    }"
   />
 </div>
 
-## Security Notices
+## Required Tools
 
-::: warning Operational Security
-Always maintain strict operational security when handling sensitive data
-:::
-
-::: danger Legal Notice
-Users are responsible for ensuring compliance with applicable laws and regulations
-:::
+<div class="tools-grid">
+  <ToolCard
+    icon="🔧"
+    title="EditThisCookie"
+    description="Browser extension for cookie management and analysis"
+  />
+  <ToolCard
+    icon="📦"
+    title="WinRAR"
+    description="File compression and archive management utility"
+  />
+  <ToolCard
+    icon="📝"
+    title="Notepad++"
+    description="Advanced text editor for log analysis"
+  />
+</div>
 
 <style>
-.hero-section {
-  text-align: center;
-  padding: 2rem;
+.hero-container {
+  background: linear-gradient(45deg, #000, #1a1a1a);
+  padding: 4rem 2rem;
   margin: 2rem 0;
-  background: linear-gradient(45deg, var(--vp-c-bg-soft), var(--vp-c-bg-alt));
   border-radius: 1rem;
-  border: 1px solid var(--vp-c-brand);
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-section h1 {
-  background: linear-gradient(120deg, var(--vp-c-brand), var(--vp-c-brand-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.matrix-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: matrixScroll 20s linear infinite;
 }
 
-.content-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
-.tools-section {
+.glitch-text {
+  font-size: 3rem;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+  position: relative;
+}
+
+.cyber-subtitle {
+  font-size: 1.5rem;
+  color: #00e5ff;
+  margin-top: 1rem;
+}
+
+.pulse-line {
+  height: 2px;
+  background: #00ff00;
+  margin: 2rem auto;
+  width: 200px;
+  animation: pulse 2s infinite;
+}
+
+.data-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 2rem 0;
 }
 
-.methods-grid {
+.tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
 }
 
-:deep(.feature-box) {
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-border);
-  transition: all 0.3s ease;
+@keyframes matrixScroll {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
 }
 
-:deep(.feature-box:hover) {
-  transform: translateY(-4px);
-  border-color: var(--vp-c-brand);
-  box-shadow: 0 8px 16px rgba(0, 229, 255, 0.1);
-}
-
-:deep(.feature-title) {
-  background: linear-gradient(120deg, var(--vp-c-brand), var(--vp-c-brand-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+@keyframes pulse {
+  0% { transform: scaleX(1); opacity: 1; }
+  50% { transform: scaleX(1.5); opacity: 0.5; }
+  100% { transform: scaleX(1); opacity: 1; }
 }
 </style>

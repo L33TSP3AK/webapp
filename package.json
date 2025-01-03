@@ -7,7 +7,9 @@
     "docs:preview": "vitepress preview docs",
     "start": "vitepress dev docs --port 5174"
   },
-  "devDependencies": {
+  "dependencies": {
+    "mongodb": "^5.0.0",
+    "dotenv": "^16.0.0",
     "vitepress": "latest"
   }
 }
